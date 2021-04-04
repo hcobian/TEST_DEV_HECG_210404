@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    @{ if (!string.IsNullOrEmpty(ViewBag.message))
+        {
+            <div class="alert alert-danger"> @ViewBag.message</div>
+        }
+    }
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>IdPersonaFisica</th>
+                <th>FechaRegistro</th>
+                <th>FechaActualizacion</th>
+                <th>Nombre</th>
+                <th>ApellidoPaterno</th>
+                <th>ApellidoMaterno</th>
+                <th>RFC</th>
+                <th>FechaNacimiento</th>
+                <th>UsuarioAgrega</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var elm in ViewBag.Personas)
+            {
+
+                <tr>
+                    <td>@elm.IdPersonaFisica</td>
+                    <td>@elm.FechaRegistro</td>
+                    <td>@elm.FechaActualizacion</td>
+                    <td>@elm.Nombre</td>
+                    <td>@elm.ApellidoPaterno</td>
+                    <td>@elm.ApellidoMaterno</td>
+                    <td>@elm.RFC</td>
+                    <td>@elm.FechaNacimiento</td>
+                    <td>@elm.UsuarioAgrega</td>
+                    <td>@elm.Activo</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <h4>Agregar</h4>
+    <form action="/PersonaF/Agregar" method="post">
+
+        <div class="form-group">
+            <label>Ingresa tu nombre</label>
+            <input type="text" name="nombre" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu ApellidoPaterno</label>
+            <input type="text" name="apPat" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu ApellidoMaterno</label>
+            <input type="text" name="apMat" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu RFC</label>
+            <input type="text" name="RFC" value="" />
+        </div>
+
+        <div class="form-group">
+            <button>Agregar</button>
+        </div>
+
+    </form>
+
+    <h4>Editar</h4>
+    <form action="/PersonaF/Editar" method="post">
+
+        <div class="form-group">
+            <label>Ingresa el ID</label>
+            <input type="text" name="ID" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu nombre</label>
+            <input type="text" name="nombre" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu ApellidoPaterno</label>
+            <input type="text" name="apPat" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu ApellidoMaterno</label>
+            <input type="text" name="apMat" value="" />
+        </div>
+
+        <div class="form-group">
+            <label>Ingresa tu RFC</label>
+            <input type="text" name="RFC" value="" />
+        </div>
+
+        <div class="form-group">
+            <button>Editar</button>
+        </div>
+
+    </form>
+
+    <h4>Eliminar</h4>
+    <form action="/PersonaF/Eliminar" method="post">
+        <div class="form-group">
+            <label>Ingresa el ID</label>
+            <input type="text" name="ID" value="" />
+        </div>    
+        <div class="form-group">
+            <button>Eliminar</button>
+        </div>
+    </form>
+</div>
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            ordering: true,
+            scrollY: 800,
+            paging: true,
+            searching: false,
+            scrollCollapse: true
+        } );
+    });
+
+    
+</script>
+    }

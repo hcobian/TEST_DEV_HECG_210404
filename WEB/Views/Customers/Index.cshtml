@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <a href="@Url.Content("~/Customers/GetFile")" target="_blank">Get File</a>
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>IdCliente</th>
+                    <th>FechaRegistroEmpresa</th>
+                    <th>RazonSocial</th>
+                    <th>RFC</th>
+                    <th>Sucursal</th>
+                    <th>IdEmpleado</th>
+                    <th>Nombre</th>
+                    <th>Paterno</th>
+                    <th>Materno</th>
+                    <th>IdViaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var elm in ViewBag.Lista.Data)
+                {
+
+                    <tr>
+                        <td>@elm.IdCliente</td>
+                        <td>@elm.FechaRegistroEmpresa</td>
+                        <td>@elm.RazonSocial</td>
+                        <td>@elm.RFC</td>
+                        <td>@elm.Sucursal</td>
+                        <td>@elm.IdEmpleado</td>
+                        <td>@elm.Nombre</td>
+                        <td>@elm.Paterno</td>
+                        <td>@elm.Materno</td>
+                        <td>@elm.IdViaje</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+</div>
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            ordering: true,
+            scrollY: 800,
+            paging: true,
+            searching: false,
+            scrollCollapse: true
+        } );
+    });
+
+    
+</script>
+    }
